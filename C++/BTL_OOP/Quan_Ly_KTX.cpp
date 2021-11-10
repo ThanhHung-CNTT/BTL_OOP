@@ -1110,112 +1110,470 @@ void Dormitory::output()
     }
 }
 
-void Dormitory::sapxepName(){
-    for(int i=0;  i<list_person.size()-1  ;  i++){
-        for(int j= list_person.size()-1  ;  j>i ;  j--){
-            //Táº¡o biáº¿n lÆ°u tĂªn dÆ°á»›i dáº¡ng máº£ng kĂ­ tá»±
-            char* name1= new char[list_person[j]->getName().length()];
-            strcpy(name1,list_person[j]->getName().c_str());
-            char* name2= new char[list_person[j-1]->getName().length()];
-            strcpy(name2,list_person[j-1]->getName().c_str());
-            //sắp xếp tăng dần theo tên
-            if(strcmp(name1,name2)<0){
-                Person * mtp;
-                mtp = list_person[j];
-                list_person[j]=list_person[j-1];
-                list_person[j-1] = mtp;
-            }
-        }
-    }
-    for (int i = 0; i < list_person.size(); i++){
-    	
-        if (list_person[i]->selection() == true)
-            list_person[i]->Xuat(i);
-        
-    }
-    for (int i = 0; i < list_person.size(); i++){
-        
-		
-		if (list_person[i]->selection() == false)
-            list_person[i]->Xuat(i);
-        
-    }
-}
-void Dormitory::SortName(){
-    for(int i=0;  i<list_person.size()-1  ;  i++){
-        for(int j= list_person.size()-1  ;  j>i ;  j--){
-            //Táº¡o biáº¿n lÆ°u tĂªn dÆ°á»›i dáº¡ng máº£ng kĂ­ tá»±
-            char* name1= new char[list_person[j]->getName().length()];
-            strcpy(name1,list_person[j]->getName().c_str());
-            char* name2= new char[list_person[j-1]->getName().length()];
-            strcpy(name2,list_person[j-1]->getName().c_str());
-             //sắp xếp tăng dần theo tên
-            if(strcmp(name1,name2)<0){
-                Person * mtp;
-                mtp = list_person[j];
-                list_person[j]=list_person[j-1];
-                list_person[j-1] = mtp;
-            }
-        }
-    }
-    for (int i = 0; i < list_person.size(); i++){
-    	
-        if (list_person[i]->selection() == true)
-            list_person[i]->output(i);
-        
-    }
-    for (int i = 0; i < list_person.size(); i++){
-        
-		
-		if (list_person[i]->selection() == false)
-            list_person[i]->output(i);
-        
-    }
-}
-void Dormitory::timkiemAddress(){
-    int dem = 0;
-    string timkiem;
-    cout << "Nhap dia chi day du de tim: " << endl;
-    cin.ignore();
-    getline(cin, timkiem);
-    for (int i = 0; i < list_person.size(); i++)
+void Dormitory::sapxepName()
+{
+    for (int i = 0; i < list_person.size() - 1; i++)
     {
-        if (timkiem == list_person[i]->getAddress())
+        for (int j = list_person.size() - 1; j > i; j--)
         {
-            dem++;
-            if (list_person[i]->selection())
-                cout << "Sinh vien!\n\n " << endl;
-            else
-                cout << "Ban quan ly!\n\n " << endl;
-            // inkhung();
-            list_person[i]->Xuat(i);
+            char *name1 = new char[list_person[j]->getName().length()];
+            strcpy(name1, list_person[j]->getName().c_str());
+            char *name2 = new char[list_person[j - 1]->getName().length()];
+            strcpy(name2, list_person[j - 1]->getName().c_str());
+            if (strcmp(name1, name2) < 0)
+            {
+                Person *mtp;
+                mtp = list_person[j];
+                list_person[j] = list_person[j - 1];
+                list_person[j - 1] = mtp;
+            }
         }
     }
-    if (dem == 0)
-        cout << "\nKhong tim duoc theo yeu cau!!!\n\n" << endl;
+    int i = 1, Luachon, n;
+    inmenu3();
+    while (i)
+    {
+        cout << "\n \n  Nhap lua chon: ";
+        cin >> Luachon;
+        switch (Luachon)
+        {
+        case 1:
+        {
+            system("cls");
+            inmenu3();
+            for (int i = 0; i < list_person.size(); i++)
+            {   
+                if(list_person[i]->selection()==true){
+                    inkhung();
+                    list_person[i]->Xuat(i);
+                }
+            }
+
+            break;
+        }
+        case 2:
+        {
+            system("cls");
+            inmenu3();
+            for (int i = 0; i < list_person.size(); i++)
+            {
+                    if(list_person[i]->selection()==false){
+                    inkhung1();
+                    list_person[i]->Xuat(i);
+                }
+            }
+            break;
+        }
+        case 3:
+        {
+            i--;
+            break;
+        }
+        default:
+        {
+            cout << "  Lua chon khong hop le!!!" << endl;
+            break;
+        }
+        }
+    }
+}
+void Dormitory::SortName()
+{
+    for (int i = 0; i < list_person.size() - 1; i++)
+    {
+        for (int j = list_person.size() - 1; j > i; j--)
+        {
+            char *name1 = new char[list_person[j]->getName().length()];
+            strcpy(name1, list_person[j]->getName().c_str());
+            char *name2 = new char[list_person[j - 1]->getName().length()];
+            strcpy(name2, list_person[j - 1]->getName().c_str());
+            if (strcmp(name1, name2) < 0)
+            {
+                Person *mtp;
+                mtp = list_person[j];
+                list_person[j] = list_person[j - 1];
+                list_person[j - 1] = mtp;
+            }
+        }
+    }
+    int i = 1, Selection, n;
+    inmenu4();
+    while (i)
+    {
+        cout << "\n \n  Enter selection: ";
+        cin >> Selection;
+        switch (Selection)
+        {
+        case 1:
+        {
+            system("cls");
+            inmenu4();
+            for (int i = 0; i < list_person.size(); i++)
+            {   
+                if(list_person[i]->selection()==true){
+                    inkhung3();
+                    list_person[i]->Xuat(i);
+                }
+            }
+
+            break;
+        }
+        case 2:
+        {
+            system("cls");
+            inmenu4();
+            for (int i = 0; i < list_person.size(); i++)
+            {
+                    if(list_person[i]->selection()==false){
+                    inkhung4();
+                    list_person[i]->Xuat(i);
+                }
+            }
+            break;
+        }
+        case 3:
+        {
+            i--;
+            break;
+        }
+        default:
+        {
+            cout << "  Invalid selection!!!" << endl;
+            break;
+        }
+        }
+    }
 }
 
-void Dormitory::findAddress(){
-    int dem = 0;
-    string timkiem;
-    cout << "Enter the full address to search: " << endl;
-    cin.ignore();
-    getline(cin, timkiem);
-    for (int i = 0; i < list_person.size(); i++)
+void Dormitory::timkiemAddress()
+{
+    int i = 1, Selection, n;
+    inmenu3();
+    while (i)
     {
-        if (timkiem == list_person[i]->getAddress())
+        cout << "\n \n  Nhap lua chon: ";
+        cin >> Selection;
+        switch (Selection)
         {
-            dem++;
-            if (list_person[i]->selection())
-                cout << "Student!\n\n " << endl;
-            else
-                cout << "Manage!\n\n " << endl;
-            // inkhung();
-            list_person[i]->output(i);
+        case 1:
+        {
+            system("cls");
+            inmenu3();
+            int dem = 0;
+            string timkiem;
+            gotoXY(1, 5);
+            cout << "  Nhap dia chi day du de tim: " << endl;
+            cin.ignore();
+            getline(cin, timkiem);
+            for (int i = 0; i < list_person.size(); i++)
+            {   
+                if(timkiem == list_person[i]->getAddress()){
+                    dem++;
+                    if(list_person[i]->selection()==true){
+                        inkhung();
+                        list_person[i]->Xuat(i);
+                    }
+                }
+            }
+            if (dem == 0){
+                cout << "\n  Khong tim duoc theo yeu cau!!!\n\n"<< endl;
+            }
+            break;
+        }
+        case 2:
+        {
+            system("cls");
+            inmenu3();
+            int dem = 0;
+            string timkiem;
+            gotoXY(1, 5);
+            cout << "  Nhap dia chi day du de tim: " << endl;
+            cin.ignore();
+            getline(cin, timkiem);
+            for (int i = 0; i < list_person.size(); i++)
+            {
+                if(timkiem == list_person[i]->getAddress()){
+                    dem++;
+                    if(list_person[i]->selection()==false){
+                        inkhung1();
+                        list_person[i]->Xuat(i);
+                    }
+                }
+            }
+            if (dem == 0){
+                cout << "\n  Khong tim duoc theo yeu cau!!!\n\n"<< endl;
+            }
+            break;
+            
+        }
+        case 3:
+        {
+            i--;
+            break;
+        }
+        default:
+        {
+            cout << "  Invalid selection!!!" << endl;
+            break;
+        }
         }
     }
-    if (dem == 0)
-        cout << "\nThe request could not be found!!!\n\n" << endl;
+}
+
+void Dormitory::findAddress()
+{
+
+    int i = 1, Selection, n;
+    inmenu4();
+    while (i)
+    {
+        cout << "\n \n  Enter selection: ";
+        cin >> Selection;
+        switch (Selection)
+        {
+        case 1:
+        {
+            system("cls");
+            inmenu4();
+            int dem = 0;
+            string timkiem;
+            gotoXY(1, 5);
+            cout << "  Enter the full address to search: " << endl;
+            cin.ignore();
+            getline(cin, timkiem);
+            for (int i = 0; i < list_person.size(); i++)
+            {   
+                if(timkiem == list_person[i]->getAddress()){
+                    dem++;
+                    if(list_person[i]->selection()==true){
+                        inkhung3();
+                        list_person[i]->Xuat(i);
+                    }
+                }
+            }
+            if (dem == 0){
+                cout << "\n  The request could not be found!!!\n\n"<< endl;
+            }
+            break;
+        }
+        case 2:
+        {
+            system("cls");
+            inmenu4();
+            int dem = 0;
+            string timkiem;
+            gotoXY(1, 5);
+            cout << "  Enter the full address to search: " << endl;
+            cin.ignore();
+            getline(cin, timkiem);
+            for (int i = 0; i < list_person.size(); i++)
+            {
+                if(timkiem == list_person[i]->getAddress()){
+                    dem++;
+                    if(list_person[i]->selection()==false){
+                        inkhung4();
+                        list_person[i]->Xuat(i);
+                    }
+                }
+            }
+            if (dem == 0){
+                cout << "\n  The request could not be found!!!\n\n"<< endl;
+            }
+            break;
+            
+        }
+        case 3:
+        {
+            i--;
+            break;
+        }
+        default:
+        {
+            cout << "  Invalid selection!!!" << endl;
+            break;
+        }
+        }
+    }
+}
+
+void Dormitory::capnhatThongtin()
+{
+    int i;
+    if (list_person[i]->selection() == true)
+    {
+        list_person[i]->capnhatThongtin();
+    }
+    else if ((list_person[i]->selection() == false))
+    {
+        list_person[i]->capnhatThongtin();
+    }
+}
+
+void Dormitory::capnhatID()
+{
+
+    int i = 1, Selection, n;
+    inmenu3();
+    while (i)
+    {
+        cout << "\n \n  Nhap lua chon: ";
+        cin >> Selection;
+        switch (Selection)
+        {
+        case 1:
+        {
+            system("cls");
+            inmenu3();
+            int found = 0;
+            string timkiem;
+            gotoXY(1, 5);
+            cout << "  Nhap ID day du de cap nhat: " << endl;
+            cin.ignore();
+            getline(cin, timkiem);
+            for (int i = 0; i <= list_person.size() - 1; i++)
+            {
+                if (timkiem == list_person[i]->getId())
+                {
+                    found = 1;
+                    if (list_person[i]->selection() == true)
+                    {
+                        inkhung();
+                        list_person[i]->capnhatThongtin();
+                    }
+                    
+                    break;
+                }
+            }
+            if (found == 0){
+                cout << "\n  Khong ton tai!!!\n\n"<< endl;
+            }
+            break;
+        }
+        case 2:
+        {
+            system("cls");
+            inmenu3();
+            int found = 0;
+            string timkiem;
+            gotoXY(1, 5);
+            cout << "  Nhap ID day du de cap nhat: " << endl;
+            cin.ignore();
+            getline(cin, timkiem);
+            for (int i = 0; i <= list_person.size() - 1; i++)
+            {
+                if (timkiem == list_person[i]->getId())
+                {
+                    found = 1;
+                    if (list_person[i]->selection() == false)
+                    {
+                        inkhung1();
+                        list_person[i]->capnhatThongtin();
+                    }
+                    
+                    break;
+                }
+            }
+            if (found == 0){
+                cout << "\n  Khong ton tai!!!\n\n"<< endl;
+            }
+            break;
+            
+        }
+        case 3:
+        {
+            i--;
+            break;
+        }
+        default:
+        {
+            cout << "  Lua chon khong hop le!!!" << endl;
+            break;
+        }
+        }
+    }
+}
+
+void Dormitory::updateID()
+{
+    int i = 1, Selection, n;
+    inmenu4();
+    while (i)
+    {
+        cout << "\n \n  Enter selection: ";
+        cin >> Selection;
+        switch (Selection)
+        {
+        case 1:
+        {
+            system("cls");
+            inmenu4();
+            int found = 0;
+            string timkiem;
+            gotoXY(1, 5);
+            cout << " Enter the full ID to update: " << endl;
+            cin.ignore();
+            getline(cin, timkiem);
+            for (int i = 0; i <= list_person.size() - 1; i++)
+            {
+                if (timkiem == list_person[i]->getId())
+                {
+                    found = 1;
+                    if (list_person[i]->selection() == true)
+                    {
+                        inkhung3();
+                        list_person[i]->capnhatThongtin();
+                    }
+                    
+                    break;
+                }
+            }
+            if (found == 0){
+                cout << "\n  ID does not exist!!!\n\n"<< endl;
+            }
+            break;
+        }
+        case 2:
+        {
+            system("cls");
+            inmenu4();
+            int found = 0;
+            string timkiem;
+            gotoXY(1, 5);
+            cout << " Enter the full ID to search: " << endl;
+            cin.ignore();
+            getline(cin, timkiem);
+            for (int i = 0; i <= list_person.size() - 1; i++)
+            {
+                if (timkiem == list_person[i]->getId())
+                {
+                    found = 1;
+                    if (list_person[i]->selection() == false)
+                    {
+                        inkhung4();
+                        list_person[i]->capnhatThongtin();
+                    }
+                    
+                    break;
+                }
+            }
+            if (found == 0){
+                cout << "\n  ID does not exist!!!\n\n"<< endl;
+            }
+            break;
+            
+        }
+        case 3:
+        {
+            i--;
+            break;
+        }
+        default:
+        {
+            cout << "  Invalid selection!!!" << endl;
+            break;
+        }
+        }
+    }
 }
 
 void Dormitory::timkiemID(){
@@ -1264,63 +1622,7 @@ void Dormitory::findID(){
         cout << "\nThe request could not be found!!!\n\n" << endl;
 }
 
-void Dormitory::capnhatThongtin(){
-    int i;
-        if(list_person[i]->selection()==true){
-            list_person[i]->capnhatThongtin();
-        }
-        else if ((list_person[i]->selection()==false)){
-            list_person[i]->capnhatThongtin();
-        }
-}
 
-void Dormitory::updateInformation(){
-    int i;
-        if(list_person[i]->selection()==true){
-            list_person[i]->updateInformation();
-        }
-        else if ((list_person[i]->selection()==false)){
-            list_person[i]->updateInformation();
-        }
-}
-
-void Dormitory::capnhatID(){
-    int found=0;
-    string timkiem;
-    cout << "Nhap ID day du de cap nhat: ";
-    fflush(stdin);
-    getline(cin, timkiem);
-    for(int i=0;i<=list_person.size()-1;i++){
-        if(timkiem==list_person[i]->getId()){
-            found = 1;
-            cout << "Cap nhat thong tin co ID: " << timkiem << endl;
-            capnhatThongtin();
-            break;
-        }
-    }
-    if(found == 0){
-        cout << "Khong ton tai!"<< endl;
-    }
-}
-
-void Dormitory::updateID(){
-    int found=0;
-    string find;
-    cout << "Enter the full ID to update: ";
-    fflush(stdin);
-    getline(cin, find);
-    for(int i=0;i<=list_person.size()-1;i++){
-        if(find==list_person[i]->getId()){
-            found = 1;
-            cout << "Update information with ID " << find << endl;
-            updateInformation();
-            break;
-        }
-    }
-    if(found == 0){
-        cout << "ID does not exist!"<< endl;
-    }
-}
 
 void Dormitory::xoaID(){
     int found = 0;
