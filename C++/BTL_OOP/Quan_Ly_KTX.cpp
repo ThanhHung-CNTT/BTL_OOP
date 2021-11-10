@@ -258,66 +258,55 @@ void Student::Nhap(int &n){
 
 void Student::Xuat(int &n){
     Person::Xuat(n);
-    cout<<"So CMND: "<<identitycard<<endl;
-    cout<<"So phong: "<<room<<endl;
-    cout<<"So thang: "<< months<< endl;
-    cout<<"Don gia: "<<unitprice<<endl;
-    cout<<"So lan vi pham: "<<violations<<endl;
+    Person::Xuat(n);
+    gotoXY(100,4+n);
+    cout << identitycard;
+    gotoXY(115,4+n);
+    cout << room ;
+    gotoXY(125,4+n);
+    cout << months;
+    gotoXY(135,4+n);
+    cout << unitprice;
+    gotoXY(148,4+n);
+    cout << violations;
+    gotoXY(162,4+n);
     this->tinhtien();
-    cout<<"So tien can dong noi tru: "<< money << endl;
+    cout << money ;
+    cout<<"\n\n\n";
 }
 
 void Student::capnhatThongtin(){
     Person::capnhatThongtin();
-    cout<<"Nhap so CMND: ";
+    gotoXY(100,4);
     getline(cin, identitycard);
-	fflush(stdin);
-    cout<<"Nhap so phong: ";
-    cin>>room;
-	fflush(stdin);
-    cout << "Nhap so thang: ";
+    fflush(stdin);
+    gotoXY(115,4);
+    cin >> room;
+    fflush(stdin);
+    gotoXY(125,4);
     cin >> months;
     fflush(stdin);
-    cout<<"Nhap don gia: ";
-    cin>>unitprice;
-	fflush(stdin);
-    cout<<"Nhap so lan vi pham: ";
-    cin>>violations;
-	fflush(stdin);
-}
-
-void Student::updateInformation(){
-    Person::updateInformation();
-    cout<<"Enter Identity card number: ";
-    getline(cin, identitycard);
-	fflush(stdin);
-    cout<<"Enter Room number: ";
-    cin>>room;
-	fflush(stdin);
-    cout << "Enter Months number: ";
-    cin >> months;
+    gotoXY(135,4);
+    cin >> unitprice;
     fflush(stdin);
-    cout<<"Enter Unit price: ";
-    cin>>unitprice;
-	fflush(stdin);
-    cout<<"The number of violations: ";
-    cin>>violations;
-	fflush(stdin);
+    gotoXY(148,4);
+    cin >> violations;
+    fflush(stdin);
 }
 
 class Manage : public Person{
 private:
-    	unsigned long int coefficientssalary; //Tiền lương
+    	double coefficientssalary; //He so lương
     	string position; //Chức vụ
 	string phone; //CMND
-    	int seniority; //thâm niên
+    	double seniority; //thâm niên
 public: 
     Manage();
     ~Manage();
-    unsigned long int getCoefficientssalary();
-    void setCoefficientssalary(unsigned long int coefficientssalary);
-    double getSalary();
-    void setSalary(double salary);
+    double getCoefficientssalary();
+    void setCoefficientssalary(double coefficientssalary);
+    double getSeniority();
+    void setSeniority(double seniority);
     string getPosition();
     void setPosition(string position);
     string getPhone();
@@ -341,10 +330,10 @@ Manage::Manage(){
 Manage::~Manage(){
 
 }
-unsigned long int Manage::getCoefficientssalary(){
+double Manage::getCoefficientssalary(){
     return coefficientssalary;
 }
-void Manage::setCoefficientssalary(unsigned long int coefficientssalary){
+void Manage::setCoefficientssalary(double coefficientssalary){
     this->coefficientssalary=coefficientssalary;
 }
 string Manage::getPosition(){
@@ -352,6 +341,12 @@ string Manage::getPosition(){
 }
 void Manage::setPosition(string position){
     this->position=position;
+}
+double Manage::getSeniority(){
+    return seniority;
+}
+void Manage::setSeniority(double seniority){
+    this->seniority = seniority;
 }
 string Manage::getPhone(){
 	return phone;
@@ -362,83 +357,514 @@ void Manage::setPhone(string phone){
 
 void Manage::Nhap(int &n){
     Person::Nhap(n);
-    cout<<"Nhap so dien thoai: ";
+    gotoXY(100,4+n);
     getline(cin, phone);
-	fflush(stdin);
-    cout<<"Nhap tham nien: ";
-    cin>>seniority;
     fflush(stdin);
-	cout<<"Nhap he so luong: ";
-	cin>>coefficientssalary;
-	fflush(stdin);
-	cout<<"Nhap chuc vu: ";
-	getline(cin,position);
-}
-
-void Manage::input(int &n){
-    Person::input(n);
-    cout<<"Enter your phone number: ";
-    getline(cin, phone);
-	fflush(stdin);
-    cout<<"Enter seniority: ";
-    cin>>seniority;
+    gotoXY(115,4+n);
+    cin >> seniority;
     fflush(stdin);
-	cout<<"Enter salary: ";
-	cin>>coefficientssalary;
-	fflush(stdin);
-	cout<<"Enter position: ";
-	getline(cin,position);
+    gotoXY(130,4+n);
+    cin >> coefficientssalary;
+    fflush(stdin);
+    gotoXY(145,4+n);
+    getline(cin, position);
 }
 
 void Manage::Xuat(int &n){
     Person::Xuat(n);
-    cout<<"So dien thoai: "<<phone<<endl;
-    cout<<"Tham nien: "<< seniority<< endl;
-	cout<<"He so luong: "<<coefficientssalary<<endl;
-	cout<<"Chuc vu: "<<position<<endl;
+    gotoXY(100,4+n);
+    cout << phone << endl;
+    gotoXY(115,4+n);
+    cout << seniority << endl;
+    gotoXY(130,4+n);
+    cout << coefficientssalary << endl;
+    gotoXY(145,4+n);
+    cout << position << endl;
+    gotoXY(160,4+n);
     this->tinhtien();
-    cout<<"Luong: "<< money<< endl;
-}
-
-void Manage::output(int &n){
-    Person::output(n);
-    cout<<"Phone number: "<<phone<<endl;
-    cout<<"Seniority: "<< seniority<< endl;
-	cout<<"Salary: "<<coefficientssalary<<endl;
-	cout<<"Position: "<<position<<endl;
-    this->tinhtien();
-    cout<<"Salary: "<< money<< endl;
+    cout << money << endl;
 }
 
 void Manage::capnhatThongtin(){
     Person::capnhatThongtin();
-    cout<<"Nhap so dien thoai: ";
+    gotoXY(100,4);
     getline(cin, phone);
-	fflush(stdin);
-    cout<<"Nhap tham nien: ";
-    cin>>seniority;
     fflush(stdin);
-	cout<<"Nhap he so luong: ";
-	cin>>coefficientssalary;
-	fflush(stdin);
-	cout<<"Nhap chuc vu: ";
-	getline(cin,position);
+    gotoXY(115,4);
+    cin >> seniority;
+    fflush(stdin);
+    gotoXY(130,4);
+    cin >> coefficientssalary;
+    fflush(stdin);
+    gotoXY(145,4);
+    getline(cin, position);
 }
 
-void Manage::updateInformation(){
-    Person::updateInformation();
-    cout<<"Enter your phone number: ";
-    getline(cin, phone);
-	fflush(stdin);
-    cout<<"Enter seniority: ";
-    cin>>seniority;
-    fflush(stdin);
-	cout<<"Enter salary: ";
-	cin>>coefficientssalary;
-	fflush(stdin);
-	cout<<"Enter position: ";
-	getline(cin,position);
+void inmenu1(){
+	for(int i=0; i <5; i++){
+		gotoXY(1,i);
+		putchar(219);
+	}
+	
+	for(int i=0; i <5; i++){
+		gotoXY(30,i);
+		putchar(219);
+	}
+	for(int i=2; i <30; i++){
+		gotoXY(i,0);
+		putchar(223);
+	}
+	for(int i=2; i <30; i++){
+		gotoXY(i,4);
+		putchar(220);
+	}
+	gotoXY(2,1);
+        cout << "1. Nhap sinh vien";
+        gotoXY(2,2);
+        cout << "2. Nhap ban quan ly";
+        gotoXY(2,3);
+        cout << "3. Thoat ";
 }
+
+void inmenu2(){
+	for(int i=0; i <5; i++){
+		gotoXY(1,i);
+		putchar(219);
+	}
+	
+	for(int i=0; i <5; i++){
+		gotoXY(30,i);
+		putchar(219);
+	}
+	for(int i=2; i <30; i++){
+		gotoXY(i,0);
+		putchar(223);
+	}
+	for(int i=2; i <30; i++){
+		gotoXY(i,4);
+		putchar(220);
+	}
+		
+	gotoXY(2,1);
+        cout << "1. Enter student";
+        gotoXY(2,2);
+        cout << "2. Enter manage";
+        gotoXY(2,3);
+        cout << "3. Exit ";
+}
+
+void inmenu3(){
+	for(int i=0; i <5; i++){
+		gotoXY(1,i);
+		putchar(219);
+	}
+	
+	for(int i=0; i <5; i++){
+		gotoXY(30,i);
+		putchar(219);
+	}
+	for(int i=2; i <30; i++){
+		gotoXY(i,0);
+		putchar(223);
+	}
+	for(int i=2; i <30; i++){
+		gotoXY(i,4);
+		putchar(220);
+	}
+	gotoXY(2,1);
+        cout << "1. Sinh vien";
+        gotoXY(2,2);
+        cout << "2. Ban quan ly";
+        gotoXY(2,3);
+        cout << "3. Thoat ";
+}
+
+void inmenu4(){
+	for(int i=0; i <5; i++){
+		gotoXY(1,i);
+		putchar(219);
+	}
+	
+	for(int i=0; i <5; i++){
+		gotoXY(30,i);
+		putchar(219);
+	}
+	for(int i=2; i <30; i++){
+		gotoXY(i,0);
+		putchar(223);
+	}
+	for(int i=2; i <30; i++){
+		gotoXY(i,4);
+		putchar(220);
+	}
+		gotoXY(2,1);
+        cout << "1. Student";
+        gotoXY(2,2);
+        cout << "2. Manage";
+        gotoXY(2,3);
+        cout << "3. Exit ";
+}
+
+void inkhung(){
+//in bien doc
+    for(int i=1; i <25; i++){
+		gotoXY(34,i);
+		putchar(219);
+		gotoXY(59,i);
+		putchar(219);
+		gotoXY(69,i);
+		putchar(219);
+		gotoXY(84,i);
+		putchar(219);
+		gotoXY(99,i);
+		putchar(219);
+		gotoXY(114,i);
+		putchar(219);
+        gotoXY(124,i);
+		putchar(219);
+		gotoXY(134,i);
+		putchar(219);
+        gotoXY(144,i);
+		putchar(219);
+        gotoXY(161,i);
+		putchar(219);
+        gotoXY(177,i);
+        putchar(219);
+	}
+
+    // in bien ngang
+    for(int i=35; i <177; i++){
+		gotoXY(i,1);
+		putchar(223);
+		gotoXY(i,24);
+		putchar(220);
+		gotoXY(i,3);
+		putchar(220);
+	}
+	// in cac tieu de
+	gotoXY(35,2);
+	cout<<" Ho va ten";
+	gotoXY(60,2);
+	cout<<" Tuoi";
+	gotoXY(70,2);
+	cout<<" Dia chi";
+	gotoXY(85,2);
+	cout<<" Ma ID";
+	gotoXY(100,2);
+	cout<<" CMND/CCCD";
+	gotoXY(115,2);
+	cout<<" Phong";
+	gotoXY(125,2);
+	cout<<" Thang";
+    gotoXY(135,2);
+    cout <<" Don gia";
+    gotoXY(145,2);
+    cout<<" So lan vi pham";
+    gotoXY(162,2);
+    cout<<" Tien can dong";
+}
+
+void inkhung1(){
+//in bien doc
+    for(int i=1; i <25; i++){
+		gotoXY(34,i);
+		putchar(219);
+		gotoXY(59,i);
+		putchar(219);
+		gotoXY(69,i);
+		putchar(219);
+		gotoXY(84,i);
+		putchar(219);
+		gotoXY(99,i);
+		putchar(219);
+		gotoXY(114,i);
+		putchar(219);
+        gotoXY(129,i);
+		putchar(219);
+		gotoXY(144,i);
+		putchar(219);
+        gotoXY(159,i);
+		putchar(219);
+        gotoXY(175,i);
+		putchar(219);
+	}
+
+    // in bien ngang
+    for(int i=35; i <175; i++){
+		gotoXY(i,1);
+		putchar(223);
+		gotoXY(i,24);
+		putchar(220);
+		gotoXY(i,3);
+		putchar(220);
+	}
+	// in cac tieu de
+	gotoXY(35,2);
+	cout<<" Ho va ten";
+	gotoXY(60,2);
+	cout<<" Tuoi";
+	gotoXY(70,2);
+	cout<<" Dia chi";
+	gotoXY(85,2);
+	cout<<" Ma ID";
+	gotoXY(100,2);
+	cout<<" So DT";
+	gotoXY(115,2);
+	cout<<" Tham nien";
+	gotoXY(130,2);
+	cout<<" He so luong";
+    gotoXY(145,2);
+    cout <<" Chuc vu";
+    gotoXY(160,2);
+    cout<<" Tien luong";
+}
+
+void inkhung3(){
+//in bien doc
+    for(int i=1; i <25; i++){
+		gotoXY(34,i);
+		putchar(219);
+		gotoXY(59,i);
+		putchar(219);
+		gotoXY(69,i);
+		putchar(219);
+		gotoXY(84,i);
+		putchar(219);
+		gotoXY(99,i);
+		putchar(219);
+		gotoXY(114,i);
+		putchar(219);
+        gotoXY(124,i);
+		putchar(219);
+		gotoXY(134,i);
+		putchar(219);
+        gotoXY(147,i);
+		putchar(219);
+        gotoXY(161,i);
+		putchar(219);
+        gotoXY(177,i);
+        putchar(219);
+	}
+
+    // in bien ngang
+    for(int i=35; i <177; i++){
+		gotoXY(i,1);
+		putchar(223);
+		gotoXY(i,24);
+		putchar(220);
+		gotoXY(i,3);
+		putchar(220);
+	}
+	// in cac tieu de
+	gotoXY(35,2);
+	cout<<" First and last name";
+	gotoXY(60,2);
+	cout<<" Age";
+	gotoXY(70,2);
+	cout<<" Address";
+	gotoXY(85,2);
+	cout<<" ID code";
+	gotoXY(100,2);
+	cout<<" Identity card";
+	gotoXY(115,2);
+	cout<<" Room";
+	gotoXY(125,2);
+	cout<<" Months";
+    gotoXY(135,2);
+    cout <<" Unit price";
+    gotoXY(148,2);
+    cout<<" Violations";
+    gotoXY(162,2);
+    cout<<"Money to pay";
+}
+
+void inkhung4(){
+//in bien doc
+    for(int i=1; i <25; i++){
+		gotoXY(34,i);
+		putchar(219);
+		gotoXY(59,i);
+		putchar(219);
+		gotoXY(69,i);
+		putchar(219);
+		gotoXY(84,i);
+		putchar(219);
+		gotoXY(99,i);
+		putchar(219);
+		gotoXY(114,i);
+		putchar(219);
+        gotoXY(129,i);
+		putchar(219);
+		gotoXY(144,i);
+		putchar(219);
+        gotoXY(159,i);
+		putchar(219);
+        gotoXY(175,i);
+		putchar(219);
+	}
+
+    // in bien ngang
+    for(int i=35; i <175; i++){
+		gotoXY(i,1);
+		putchar(223);
+		gotoXY(i,24);
+		putchar(220);
+		gotoXY(i,3);
+		putchar(220);
+	}
+	// in cac tieu de
+	gotoXY(35,2);
+	cout<<"First and last name";
+	gotoXY(60,2);
+	cout<<"Age";
+	gotoXY(70,2);
+	cout<<"Address";
+	gotoXY(85,2);
+	cout<<"ID code";
+	gotoXY(100,2);
+	cout<<"Phone";
+	gotoXY(115,2);
+	cout<<"Seniority";
+	gotoXY(130,2);
+	cout<<"Salary";
+    gotoXY(145,2);
+    cout <<"Position";
+    gotoXY(160,2);
+    cout<<"Money to pay";
+}
+
+void giaodien()
+{
+    system("cls");
+    srand(time(NULL));
+    SetColor(0, 1 + rand() % 15);
+    gotoXY(45,1);
+    cout << "      ********     *    *     *       **      *       *     *      *        *     *  ********  *       *      " << endl;
+    gotoXY(45,2);
+    cout << "     *        *    *    *    *  *     *  *    *       *       *   *         *   *       *        *   *        " << endl;
+    gotoXY(45,3);
+    cout << "    *       *  *   *    *   *    *    *    *  *       *         *           * *         *          *          " << endl;
+    gotoXY(45,4);
+    cout << "     *        *    *    *  ********   *      **       *         *           *   *       *        *   *        " << endl;
+    gotoXY(45,5);
+    cout << "      ********  *  ****** *        *  *       *       *******   *           *     *     *      *       *      " << endl;
+
+    SetColor(0, 2);
+    gotoXY(73,8);
+        for(int i=0;i<=38;i++){
+            putchar(219);
+        }
+        for(int i=0;i<=10;i++){
+            cout<<endl;
+            gotoXY(73,8+i);
+            putchar(219);
+        }
+        for(int i=0;i<=36;i++){
+            putchar(219);
+        }
+        for(int i=0;i<=10;i++){
+            cout<<endl;
+            gotoXY(111,8+i);
+            putchar(219);
+        }
+    gotoXY(80, 11);
+    cout << "1. Ngon ngu Tieng Viet" << endl;
+    gotoXY(80, 12);
+    cout << "2. Language English" << endl;
+    gotoXY(80, 13);
+    cout << "3. Thoat" << endl;
+}
+
+void giaodien2()
+{
+    for(int i=0; i <13; i++){
+		gotoXY(64,i);
+		putchar(219);
+	}
+	
+	for(int i=0; i <13; i++){
+		gotoXY(120,i);
+		putchar(219);
+	}
+	for(int i=65; i <120; i++){
+		gotoXY(i,0);
+		putchar(223);
+	}
+	for(int i=65; i <120; i++){
+		gotoXY(i,12);
+		putchar(220);
+	}
+
+    SetColor(0, 2);
+    gotoXY(70,1);
+    cout << "Ban da chon ngon ngu Tieng Viet" << endl;
+    gotoXY(70,2);
+    cout << "1. Nhap thong tin";
+    gotoXY(70,3);
+    cout << "2. Hien thi thong tin";
+    gotoXY(70,4);
+    cout << "3. Sap xep theo ten";
+    gotoXY(70,5);
+    cout << "4. Tim kiem theo tinh";
+    gotoXY(70,6);
+    cout << "5. Cap nhat thong tin theo ID";
+    gotoXY(70,7);
+    cout << "6. Xoa theo ID";
+    gotoXY(70,8);
+    cout << "7. Tim kiem theo ID";
+    gotoXY(70,9);
+    cout << "8. Tinh tong tien";
+    gotoXY(70,10);
+    cout << "9. Thoat ";
+    gotoXY(70,15);
+    cout << " Nhap lua chon: ";
+}
+
+void giaodien3()
+{
+    for(int i=0; i <13; i++){
+		gotoXY(64,i);
+		putchar(219);
+	}
+	
+	for(int i=0; i <13; i++){
+		gotoXY(120,i);
+		putchar(219);
+	}
+	for(int i=65; i <120; i++){
+		gotoXY(i,0);
+		putchar(223);
+	}
+	for(int i=65; i <120; i++){
+		gotoXY(i,12);
+		putchar(220);
+	}
+
+    SetColor(0, 2);
+    gotoXY(70,1);
+    cout << "You have selected the English language" << endl;
+    gotoXY(70,2);
+    cout << "1. Enter information";
+    gotoXY(70,3);
+    cout << "2. Display information";
+    gotoXY(70,4);
+    cout << "3. Sort by name";
+    gotoXY(70,5);
+    cout << "4. Search by address";
+    gotoXY(70,6);
+    cout << "5. Update by ID";
+    gotoXY(70,7);
+    cout << "6. Delete by ID";
+    gotoXY(70,8);
+    cout << "7. Search by ID";
+    gotoXY(70,9);
+    cout << "8. Total Money";
+    gotoXY(70,10);
+    cout << "9. Exit ";
+    gotoXY(70,15);
+    cout <<  "Enter Choose: ";
+}
+
 
 class Dormitory{
 private:
@@ -453,10 +879,15 @@ public:
     void output();
     friend void inkhung();
     friend void inmenu1();
+	friend void inkhung1();
+    friend void inmenu2();
+    friend void inkhung3();
+    friend void inmenu3();
+    friend void inkhung4();
+    friend void inmenu4();
     void sapxepName();
     void SortName();
     void capnhatThongtin();
-    void updateInformation();
     void capnhatID();
     void updateID();
     void timkiemAddress();
@@ -465,6 +896,8 @@ public:
     void findID();
     void xoaID();
     void deleteID();
+    void TongTien();
+    void TotalMoney();
 };
 
 Dormitory::Dormitory(){
@@ -575,37 +1008,105 @@ void Dormitory::input(){
     }
 }
 
-void Dormitory::Xuat(){   
-    system("cls");
-	// inkhung();
-    for (int i = 0; i < list_person.size(); i++){
-    	
-        if (list_person[i]->selection() == true)
-            list_person[i]->Xuat(i);
-        
-    }
-    for (int i = 0; i < list_person.size(); i++){
-        
-		
-		if (list_person[i]->selection() == false)
-            list_person[i]->Xuat(i);
+void Dormitory::Xuat()
+{
+    int i = 1, Luachon, n;
+    inmenu3();
+    while (i)
+    {
+        cout << "\n \n  Nhap lua chon: ";
+        cin >> Luachon;
+        switch (Luachon)
+        {
+        case 1:
+        {
+            system("cls");
+            inmenu3();
+            for (int i = 0; i < list_person.size(); i++)
+            {   
+                if(list_person[i]->selection()==true){
+                    inkhung();
+                    list_person[i]->Xuat(i);
+                }
+            }
+
+            break;
+        }
+        case 2:
+        {
+            system("cls");
+            inmenu3();
+            for (int i = 0; i < list_person.size(); i++)
+            {
+                    if(list_person[i]->selection()==false){
+                    inkhung1();
+                    list_person[i]->Xuat(i);
+                }
+            }
+            break;
+        }
+        case 3:
+        {
+            i--;
+            break;
+        }
+        default:
+        {
+            cout << "  Lua chon khong hop le!!!" << endl;
+            break;
+        }
+        }
     }
 }
 
-void Dormitory::output(){   
-    system("cls");
-	// inkhung();
-    for (int i = 0; i < list_person.size(); i++){
-    	
-        if (list_person[i]->selection() == true)
-            list_person[i]->output(i);
-        
-    }
-    for (int i = 0; i < list_person.size(); i++){
-        
-		
-		if (list_person[i]->selection() == false)
-            list_person[i]->output(i);
+void Dormitory::output()
+{
+    int i = 1, Selection, n;
+    inmenu4();
+    while (i)
+    {
+        cout << "\n \n  Enter selection: ";
+        cin >> Selection;
+        switch (Selection)
+        {
+        case 1:
+        {
+            system("cls");
+            inmenu4();
+            for (int i = 0; i < list_person.size(); i++)
+            {   
+                if(list_person[i]->selection()==true){
+                    inkhung4();
+                    list_person[i]->Xuat(i);
+                }
+            }
+
+            break;
+        }
+        case 2:
+        {
+            system("cls");
+            inmenu4();
+            for (int i = 0; i < list_person.size(); i++)
+            {
+                    if(list_person[i]->selection()==false){
+                    inkhung4();
+                    list_person[i]->Xuat(i);
+                }
+            }
+            break;
+        }
+        case 3:
+        {
+            i--;
+            break;
+        }
+        default:
+        {
+            cout << "  Invalid selection!!!" << endl;
+            break;
+        }
+        }
     }
 }
 
