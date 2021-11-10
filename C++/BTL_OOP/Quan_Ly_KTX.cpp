@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>#include <iostream>
 #include <string>
 #include <vector>
 #include <Windows.h>
@@ -12,24 +11,48 @@
 
 using namespace std;
 
+void SetColor(int backgound_color, int text_color)
+{
+    HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    int color_code = backgound_color * 16 + text_color;
+    SetConsoleTextAttribute(hStdout, color_code);
+}
+void SET_COLOR(int color)
+{
+	WORD wColor;
+     
+
+     HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+     CONSOLE_SCREEN_BUFFER_INFO csbi;
+     if(GetConsoleScreenBufferInfo(hStdOut, &csbi))
+     {
+          wColor = (csbi.wAttributes & 0xF0) + (color & 0x0F);
+          SetConsoleTextAttribute(hStdOut, wColor);
+     }
+}
+void gotoXY (int column, int line)
+{
+	COORD coord;
+	coord.X = column;
+	coord.Y = line;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
+}
+
 int numberStudent(int &n){
-	cout << "Enter number of students: " << endl;
 	cin >> n;
     return n;
 }
 int numberManage(int &n){
-	cout << "Enter number of manages: "<< endl;
 	cin >> n;
     return n;
 }
 
 int SoluongSinhvien(int &n){
-	cout << "Nhap so luong sinh vien: " << endl;
 	cin >> n;
     return n;
 }
 int SoluongQuanly(int &n){
-	cout << "Nhap so luong quan ly: "<< endl;
 	cin >> n;
     return n;
 }
@@ -40,7 +63,7 @@ class Person{
         int age;
         string address;
 	string id;
-	unsigned long int money;
+	double money;
         bool check;
     public:
 	Person();
@@ -59,10 +82,7 @@ class Person{
         int SoluongQuanly(int &n);
         virtual void Nhap(int &);
         virtual void Xuat(int &);
-        virtual void input(int &);
-        virtual void output(int &);
         virtual void capnhatThongtin();
-        virtual void updateInformation();
         virtual void tinhtien() = 0;
         double getMoney(){
             return money;
@@ -110,70 +130,40 @@ void Student::setId(double id) {
 }
 
 void Person::Nhap(int &n){
-    cout << "Nhap ho va ten: ";
     fflush(stdin);
+    gotoXY(35, 4+n);
     getline(cin, name);
-    cout << "Nhap tuoi: ";
     fflush(stdin);
+    gotoXY(60, 4+n);
     cin >> age;
-    cout << "Nhap dia chi: ";
     fflush(stdin);
+    gotoXY(70,4+n);
     getline(cin, address);
-    cout<<"Nhap ma sinh vien: ";
-    getline(cin, id);
-	fflush(stdin);
-}
-
-void Person::input(int &n){
-    cout << "Enter first and last name: ";
-    fflush(stdin);
-    getline(cin, name);
-    cout << "Enter age: ";
-    fflush(stdin);
-    cin >> age;
-    cout << "Enter address: ";
-    fflush(stdin);
-    getline(cin, address);
-    cout<<"Enter student code: ";
+    gotoXY(85,4+n);
     getline(cin, id);
 	fflush(stdin);
 }
 
 void Person::Xuat(int &n){
-    cout << "Ho va ten: "<< name<<endl;
-    cout << "Nam sinh: "<< age<<endl;
-    cout << "Dia chi: "<< address<<endl;
-    cout<<"Ma sinh vien: "<<id<<endl;
-}
-
-void Person::output(int &n){
-    cout << "First and last name: "<< name<<endl;
-    cout << "Age: "<< age<<endl;
-    cout << "Address: "<< address<<endl;
-    cout<<"Student code: "<<id<<endl;
+    gotoXY(35, 4+n);
+    cout << name;
+    gotoXY(60, 4+n);
+    cout << age;
+    gotoXY(70,4+n);
+    cout << address;
+    gotoXY(85,4+n);
+    cout<< id;
 }
 
 void Person::capnhatThongtin(){
-    cout << "Nhap ho va ten: ";
     fflush(stdin);
+    gotoXY(35, 4);
     getline(cin, name);
-    cout << "Nhap tuoi: ";
     fflush(stdin);
+    gotoXY(60, 4);
     cin >> age;
-    cout << "Nhap dia chi: ";
     fflush(stdin);
-    getline(cin, address);
-}
-
-void Person::updateInformation(){
-    cout << "Nhap ho va ten: ";
-    fflush(stdin);
-    getline(cin, name);
-    cout << "Nhap tuoi: ";
-    fflush(stdin);
-    cin >> age;
-    cout << "Nhap dia chi: ";
-    fflush(stdin);
+    gotoXY(70,4);
     getline(cin, address);
 }
 
@@ -181,17 +171,17 @@ class Student : public Person {
 private:
 	string identitycard; //số CMND
 	int room; // số phòng ở
-	unsigned long int unitprice; //dơn gia
+	double unitprice; //dơn gia
 	int violations; //số lần vi phạm
         double months; //số tháng ở
 public:
 	Student();
         ~Student();
-	void setIdentitycard(double identitycar);
-	double getIdentitycardnumber();
+	void setIdentitycard(string identitycar);
+	string getIdentitycardnumber();
 	void setRoom(int room);
 	int getRoom();
-	void setUnitprice (unsigned long int unitprice);
+	void setUnitprice (double unitprice);
 	double getUnitprice();
 	void setViolations(int violations);
 	int getViolations();
@@ -199,13 +189,10 @@ public:
         void setMonths(double months);
         void Nhap(int &n);
         void Xuat(int &n);
-        void input(int &n);
-        void output(int &n);
         void tinhtien(){
             this->money = this->months*this->unitprice;
         }
         void capnhatThongtin();
-        void updateInformation();
 };
 //Khai báo phương thức bên ngoài lớp
 
@@ -219,10 +206,10 @@ Student::Student(){
 }
 Student::~Student(){
 }
-double Student::getIdentitycardnumber() {
+string Student::getIdentitycardnumber() {
 	return identitycard;
 }
-void Student::setIdentitycard(double identitycard) {
+void Student::setIdentitycard(string identitycard) {
 	this->identitycard = identitycard;
 }
 int Student::getRoom() {
@@ -252,51 +239,21 @@ void Student::setViolations(int violations) {
 
 void Student::Nhap(int &n){
     Person::Nhap(n);
-    cout<<"Nhap so CMND: ";
+    gotoXY(100,4+n);
     getline(cin, identitycard);
 	fflush(stdin);
-    cout<<"Nhap so phong: ";
+    gotoXY(115,4+n);
     cin>>room;
 	fflush(stdin);
-    cout << "Nhap so thang: ";
+    gotoXY(125,4+n);
     cin >> months;
     fflush(stdin);
-    cout<<"Nhap don gia: ";
+    gotoXY(135,4+n);
     cin>>unitprice;
 	fflush(stdin);
-    cout<<"Nhap so lan vi pham: ";
+    gotoXY(148,4+n);
     cin>>violations;
 	fflush(stdin);
-}
-
-void Student::input(int &n){
-    Person::input(n);
-    cout<<"Enter your identity card number: ";
-    getline(cin, identitycard);
-	fflush(stdin);
-    cout<<"Enter room number: ";
-    cin>>room;
-	fflush(stdin);
-    cout << "Enter number months: ";
-    cin >> months;
-    fflush(stdin);
-    cout<<"Enter unit price: ";
-    cin>>unitprice;
-	fflush(stdin);
-    cout<<"Enter the number of violations: ";
-    cin>>violations;
-	fflush(stdin);
-}
-
-void Student::output(int &n){
-    Person::output(n);
-    cout<<"Identity card number: "<<identitycard<<endl;
-    cout<<"Room number: "<<room<<endl;
-    cout<<"Months number: "<< months<< endl;
-    cout<<"Unit price: "<<unitprice<<endl;
-    cout<<"The number of violations: "<<violations<<endl;
-    this->tinhtien();
-    cout<<"Boarding fee: "<< money << endl;
 }
 
 void Student::Xuat(int &n){
