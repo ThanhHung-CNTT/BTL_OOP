@@ -1576,89 +1576,351 @@ void Dormitory::updateID()
     }
 }
 
-void Dormitory::timkiemID(){
-    int dem = 0;
-    string timkiem;
-    cout << "Nhap dia chi day du de tim: " << endl;
-    cin.ignore();
-    getline(cin, timkiem);
-    for (int i = 0; i < list_person.size(); i++)
+void Dormitory::timkiemID()
+{
+    int i = 1, Selection, n;
+    inmenu3();
+    while (i)
     {
-        if (timkiem == list_person[i]->getId())
+        cout << "\n \n  Nhap lua chon: ";
+        cin >> Selection;
+        switch (Selection)
         {
-            dem++;
-            if (list_person[i]->selection())
-                cout << "\nSinh vien!\n " << endl;
-            else
-                cout << "\nBan quan ly!\n " << endl;
-            // inkhung();
-            list_person[i]->Xuat(i);
-        }
-    }
-    if (dem == 0)
-        cout << "\nKhong tim duoc theo yeu cau!!!\n\n" << endl;
-}
-
-void Dormitory::findID(){
-    int dem = 0;
-    string timkiem;
-    cout << "Enter the full ID to search: " << endl;
-    cin.ignore();
-    getline(cin, timkiem);
-    for (int i = 0; i < list_person.size(); i++)
-    {
-        if (timkiem == list_person[i]->getId())
+        case 1:
         {
-            dem++;
-            if (list_person[i]->selection())
-                cout << "\nStudent!\n " << endl;
-            else
-                cout << "\nManage!\n " << endl;
-            // inkhung();
-            list_person[i]->output(i);
-        }
-    }
-    if (dem == 0)
-        cout << "\nThe request could not be found!!!\n\n" << endl;
-}
-
-
-
-void Dormitory::xoaID(){
-    int found = 0;
-    string xoa;
-    cout << "Nhap ID day du de xoa: ";
-    cin.ignore();
-    getline(cin, xoa);
-    for (int i = 0; i <= list_person.size()-1; i++){
-        if (xoa == list_person[i]->getId()){
-            found = 1;
-            list_person.erase(list_person.begin()+i);
-            cout << "\nDa xoa ID " << xoa << " ra khoi he thong!!!"<< endl;
+            system("cls");
+            inmenu3();
+            int dem = 0;
+            string timkiem;
+            gotoXY(1, 5);
+            cout << "  Nhap ID day du de tim: " << endl;
+            cin.ignore();
+            getline(cin, timkiem);
+            for (int i = 0; i < list_person.size(); i++)
+            {   
+                if(timkiem == list_person[i]->getId()){
+                    dem++;
+                    if(list_person[i]->selection()==true){
+                        inkhung();
+                        list_person[i]->Xuat(i);
+                    }
+                    else if (list_person[i]->selection()==false){
+                        cout << "\n  Khong tim duoc theo yeu cau!!!";
+                        break;
+                    }
+                }
+            }
+            if (dem == 0){
+                cout << "\n  Khong tim duoc theo yeu cau!!!\n\n"<< endl;
+            }
             break;
         }
-    }
-    if(found == 0){
-        cout << "ID khong ton tai!!!"<< endl;
+        case 2:
+        {
+            system("cls");
+            inmenu3();
+            int dem = 0;
+            string timkiem;
+            gotoXY(1, 5);
+            cout << "  Nhap ID day du de tim: " << endl;
+            cin.ignore();
+            getline(cin, timkiem);
+            for (int i = 0; i < list_person.size(); i++)
+            {
+                if(timkiem == list_person[i]->getId()){
+                    dem++;
+                    if(list_person[i]->selection()==false){
+                        inkhung1();
+                        list_person[i]->Xuat(i);
+                    }
+                    else if (list_person[i]->selection()==true){
+                        cout << "\n  Khong tim duoc theo yeu cau!!!";
+                        break;
+                    }
+                }
+            }
+            if (dem == 0){
+                cout << "\n  Khong tim duoc theo yeu cau!!!\n\n"<< endl;
+            }
+            break;
+            
+        }
+        case 3:
+        {
+            i--;
+            break;
+        }
+        default:
+        {
+            cout << "  Invalid selection!!!" << endl;
+            break;
+        }
+        }
     }
 }
 
-void Dormitory::deleteID(){
-    int found = 0;
-    string xoa;
-    cout << "Enter the full ID to delete: ";
-    cin.ignore();
-    getline(cin, xoa);
-    for (int i = 0; i <= list_person.size()-1; i++){
-        if (xoa == list_person[i]->getId()){
-            found = 1;
-            list_person.erase(list_person.begin()+i);
-            cout << "\nRemoved ID " << xoa << " from the system!!!"<< endl;
+void Dormitory::findID()
+{
+    int i = 1, Selection, n;
+    inmenu4();
+    while (i)
+    {
+        cout << "\n \n  Enter selection: ";
+        cin >> Selection;
+        switch (Selection)
+        {
+        case 1:
+        {
+            system("cls");
+            inmenu4();
+            int dem = 0;
+            string timkiem;
+            gotoXY(1, 5);
+            cout << "  Enter the full ID to search: " << endl;
+            cin.ignore();
+            getline(cin, timkiem);
+            for (int i = 0; i < list_person.size(); i++)
+            {   
+                if(timkiem == list_person[i]->getId()){
+                    dem++;
+                    if(list_person[i]->selection()==true){
+                        inkhung3();
+                        list_person[i]->Xuat(i);
+                    }
+                    else if (list_person[i]->selection()==false){
+                        cout << "\n  The request could not be found!!!";
+                        break;
+                    }
+                }
+            }
+            if (dem == 0){
+                cout << "\n  The request could not be found!!!\n\n"<< endl;
+            }
             break;
         }
+        case 2:
+        {
+            system("cls");
+            inmenu4();
+            int dem = 0;
+            string timkiem;
+            gotoXY(1, 5);
+            cout << "  Enter the full ID to search: " << endl;
+            cin.ignore();
+            getline(cin, timkiem);
+            for (int i = 0; i < list_person.size(); i++)
+            {
+                if(timkiem == list_person[i]->getId()){
+                    dem++;
+                    if(list_person[i]->selection()==false){
+                        inkhung4();
+                        list_person[i]->Xuat(i);
+                    }
+                    else if (list_person[i]->selection()==true){
+                        cout << "\n  The request could not be found!!!";
+                        break;
+                    }
+                }
+            }
+            if (dem == 0){
+                cout << "\n  The request could not be found!!!\n\n"<< endl;
+            }
+            break;
+            
+        }
+        case 3:
+        {
+            i--;
+            break;
+        }
+        default:
+        {
+            cout << "  Invalid selection!!!" << endl;
+            break;
+        }
+        }
     }
-    if(found == 0){
-        cout << "ID does not exist!!!"<< endl;
+}
+
+void Dormitory::xoaID()
+{
+    int i = 1, luachon, n;
+    inmenu3();
+    while (i)
+    {
+        cout << "\n \n  Nhap lua chon: ";
+        cin >> luachon;
+        switch (luachon)
+        {
+        case 1:
+        {
+            system("cls");
+            inmenu3();
+            int found = 0;
+            string xoa;
+            gotoXY(1, 5);
+            cout << "  Nhap ID day du de xoa: " << endl;
+            cin.ignore();
+            getline(cin, xoa);
+            for (int i = 0; i <= list_person.size() - 1; i++)
+            {
+                if (xoa == list_person[i]->getId())
+                {
+                    found = 1;
+                    if (list_person[i]->selection() == true)
+                    {
+                        list_person.erase(list_person.begin() + i);
+                        cout << "\n  Da xoa ID " << xoa << " ra khoi he thong!!!" << endl;
+                        break;
+                    }
+                    else if (list_person[i]->selection()==false){
+                        cout << "\n  Khong tim duoc theo yeu cau!!!";
+                        break;
+                    }
+                    break;
+                }
+            }
+            if (found == 0){
+                cout << "\n  ID khong ton tai!!!\n\n"<< endl;
+            }
+            break;
+        }
+        case 2:
+        {
+            system("cls");
+            inmenu3();
+            int found = 0;
+            string xoa;
+            gotoXY(1, 5);
+            cout << "  Nhap ID day du de xoa: " << endl;
+            cin.ignore();
+            getline(cin, xoa);
+            for (int i = 0; i <= list_person.size() - 1; i++)
+            {
+                if (xoa == list_person[i]->getId())
+                {
+                    found = 1;
+                    if (list_person[i]->selection() == false)
+                    {
+                        list_person.erase(list_person.begin() + i);
+                        cout << "\n  Da xoa ID " << xoa << " ra khoi he thong!!!" << endl;
+                        break;
+                    }
+                    else if (list_person[i]->selection()==true){
+                        cout << "\n  Khong tim duoc theo yeu cau!!!";
+                        break;
+                    }
+                    break;
+                }
+            }
+            if (found == 0){
+                cout << "\n  ID khong ton tai!!!\n\n"<< endl;
+            }
+            break;
+            
+        }
+        case 3:
+        {
+            i--;
+            break;
+        }
+        default:
+        {
+            cout << "  Invalid selection!!!" << endl;
+            break;
+        }
+        }
+    }
+}
+
+void Dormitory::deleteID()
+{
+    int i = 1, luachon, n;
+    inmenu4();
+    while (i)
+    {
+        cout << "\n \n  Nhap lua chon: ";
+        cin >> luachon;
+        switch (luachon)
+        {
+        case 1:
+        {
+            system("cls");
+            inmenu4();
+            int found = 0;
+            string xoa;
+            gotoXY(1, 5);
+            cout << "  Enter the full ID to delete: " << endl;
+            cin.ignore();
+            getline(cin, xoa);
+            for (int i = 0; i <= list_person.size() - 1; i++)
+            {
+                if (xoa == list_person[i]->getId())
+                {
+                    found = 1;
+                    if (list_person[i]->selection() == true)
+                    {
+                        list_person.erase(list_person.begin() + i);
+                        cout << "\n  Removed ID " << xoa << " from the system!!!" << endl;
+                        break;
+                    }
+                    else if (list_person[i]->selection()==false){
+                        cout << "\n  ID does not exist!!!";
+                        break;
+                    }
+                    break;
+                }
+            }
+            if (found == 0){
+                cout << "\n  ID does not exist!!!\n\n"<< endl;
+            }
+            break;
+        }
+        case 2:
+        {
+            system("cls");
+            inmenu4();
+            int found = 0;
+            string xoa;
+            gotoXY(1, 5);
+            cout << "  Enter the full ID to delete: " << endl;
+            cin.ignore();
+            getline(cin, xoa);
+            for (int i = 0; i <= list_person.size() - 1; i++)
+            {
+                if (xoa == list_person[i]->getId())
+                {
+                    found = 1;
+                    if (list_person[i]->selection() == false)
+                    {
+                        list_person.erase(list_person.begin() + i);
+                        cout << "\n  Removed ID " << xoa << " from the system!!!" << endl;
+                        break;
+                    }
+                    else if (list_person[i]->selection()==true){
+                        cout << "\n  ID does not exist!!!";
+                        break;
+                    }
+                    break;
+                }
+            }
+            if (found == 0){
+                cout << "\n  ID does not exist!!!\n\n"<< endl;
+            }
+            break;
+            
+        }
+        case 3:
+        {
+            i--;
+            break;
+        }
+        default:
+        {
+            cout << "  Lua chon khong hop le!!!" << endl;
+            break;
+        }
+        }
     }
 }
 
