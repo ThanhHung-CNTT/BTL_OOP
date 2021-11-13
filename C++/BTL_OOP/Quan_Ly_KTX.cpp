@@ -1960,11 +1960,446 @@ void Dormitory::TotalMoney(){
     cout<<"Total dormitory rent: "<<Tongphi;
 }
 
-void menu(){
-    giaodien();
-    int chon;
-    cout << "Nhap lua chon: ";
-    cin >> chon;
+void menu()
+{
 
+    int chon;
+    int i = 1;
+    while (i)
+    {
+        giaodien();
+        gotoXY(70,23);
+        cout << "  Nhap lua chon: ";
+        gotoXY(72,24);
+        cin >> chon;
+        switch (chon)
+        {
+        case 1:
+        {
+            Dormitory p;
+            bool check;
+            int Luachon, j = 1;
+            while (j)
+            {
+                system("cls");
+                giaodien2();
+                cin >> Luachon;
+                switch (Luachon)
+                {
+                case 1:
+                {
+                    system("cls");
+                    giaodien2();
+                    system("cls");
+                    p.Nhap();
+                    check = true;
+                    system("cls");
+                    break;
+                }
+                case 2:
+                {
+                    system("cls");
+                    giaodien2();
+                    system("cls");
+                    if (check)
+                    {
+                        p.Xuat();
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        cout << "  Ban chua nhap thong tin vao!" << endl;
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                }
+                case 3:
+                {
+                    system("cls");
+                    giaodien2();
+                    system("cls");
+                    if (check)
+                    {
+                        p.sapxepName();
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        cout << "  Ban chua nhap thong tin vao!" << endl;
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                }
+                case 4:
+                {
+                    system("cls");
+                    giaodien2();
+                    system("cls");
+                    if (check)
+                    {
+                        p.timkiemAddress();
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        cout << "  Ban chua nhap thong tin vao!" << endl;
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                }
+                case 5:
+                {
+                    system("cls");
+                    giaodien2();
+                    system("cls");
+                    
+                    if (check)
+                    {
+                        p.capnhatID();
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        cout << "  Ban chua nhap thong tin vao!" << endl;
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                }
+                case 6:
+                {
+                    system("cls");
+                    giaodien2();
+                    system("cls");
+                    if (check)
+                    {
+                        p.xoaID();
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        cout << "  Ban chua nhap thong tin vao!" << endl;
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                }
+                case 7:
+                {
+                    system("cls");
+                    giaodien2();
+                    system("cls");
+                    if (check)
+                    {
+                        p.timkiemID();
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        cout << "  Ban chua nhap thong tin vao!" << endl;
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                }
+                case 8:
+                {
+                    system("cls");
+                    gotoXY(70,1);
+                    cout << "  =======Tong Tien=======" << endl;
+                    p.TongTien();
+                    system("pause");
+                    break;
+                }
+                case 9:
+                {
+                    system("cls");
+                    j--;
+                    break;
+                }
+                default:
+                {
+                    cout << "  Lua chon khong hop le!!!" << endl;
+                    break;
+                }
+                }
+            }
+            break;
+        }
+        case 2:
+        {
+            Dormitory p;
+            bool check;
+            int Luachon, k = 1;
+            
+            while (k)
+            {
+                system("cls");
+                giaodien3();
+                cin >> Luachon;
+                switch (Luachon)
+                {
+                case 1:
+                {
+                    system("cls");
+                    giaodien3();
+                    system("cls");
+                    p.input();
+                    check = true;
+                    system("cls");
+                    break;
+                }
+                case 2:
+                {
+                    system("cls");
+                    giaodien3();
+                    system("cls");
+                    if (check)
+                    {
+                        p.output();
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        cout << "  You have not entered information!" << endl;
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                }
+                case 3:
+                {
+                    system("cls");
+                    giaodien3();
+                    system("cls");
+                    if (check)
+                    {
+                        p.SortName();
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        cout << "  You have not entered information!" << endl;
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                }
+                case 4:
+                {
+                    system("cls");
+                    giaodien3();
+                    system("cls");
+                    if (check)
+                    {
+                        p.findAddress();
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        cout << "  You have not entered information!" << endl;
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                }
+                case 5:
+                {
+                    system("cls");
+                    giaodien3();
+                    system("cls");
+                    if (check)
+                    {
+                        p.updateID();
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        cout << "  You have not entered information!" << endl;
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                }
+                case 6:
+                {
+                    system("cls");
+                    giaodien3();
+                    system("cls");
+                    if (check)
+                    {
+                        p.deleteID();
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        cout << "  You have not entered information!" << endl;
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                }
+                case 7:
+                {
+                    system("cls");
+                    giaodien3();
+                    system("cls");
+                    if (check)
+                    {
+                        p.findID();
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        cout << "  You have not entered information!" << endl;
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                }
+                case 8:
+                {
+                    system("cls");
+                    gotoXY(70,1);
+                    cout << "  =======Total Money=======" << endl;
+                    p.TotalMoney();
+                    system("pause");
+                    break;
+                }
+                case 9:
+                {
+                    system("cls");
+                    k--;
+                    break;
+                }
+
+                default:
+                {
+                    cout << "  Invalid selection!!!" << endl;
+                    break;
+                }
+                }
+            }
+            break;
+        }
+        case 3:
+        {
+            i--;
+            break;
+        }
+        default:
+            cout << "  Nhap sai! Nhap lai" << endl;
+            break;
+        }
+    }
 }
-	
+
+void GiaoDien_DangNhap(){
+        system("cls");
+        SetColor(0, 2);
+        gotoXY(75,3);
+        for(int i=0;i<35;i++){
+            putchar(223);
+        }
+        for(int i=0;i<=3;i++){
+            cout<<endl;
+            gotoXY(74,3+i);
+            putchar(219);
+        }
+        for(int i=0;i<=3;i++){
+            cout<<endl;
+            gotoXY(110,3+i);
+            putchar(219);
+        }
+        gotoXY(79, 4);
+        TextColor(6);
+        cout<<"DANG NHAP TAI KHOAN QUAN LY";
+        SetColor(0, 2);
+        gotoXY(73,6);
+        for(int i=0;i<=38;i++){
+            putchar(219);
+        }
+        for(int i=0;i<=15;i++){
+            cout<<endl;
+            gotoXY(73,6+i);
+            putchar(219);
+        }
+        for(int i=0;i<=36;i++){
+            putchar(219);
+        }
+        for(int i=0;i<=15;i++){
+            cout<<endl;
+            gotoXY(111,6+i);
+            putchar(219);
+        }
+}
+
+int main()
+{
+    bool logic = true;
+    string user = "admin";
+    string pass = "123456";
+    string u, p;
+    do
+    {
+        GiaoDien_DangNhap();
+        gotoXY(79, 8);
+        cout << "Tai Khoan/ Account:" << endl;
+        gotoXY(79, 9);
+        TextColor(11);
+        getline(cin, u);
+        gotoXY(79, 10);
+        TextColor(2);
+        cout << "Mat Khau/ Password:" << endl;
+        gotoXY(79, 11);
+        TextColor(11);
+        getline(cin, p);
+        if (user != u || pass != p)
+        {
+            GiaoDien_DangNhap();
+            gotoXY(79, 8);
+            TextColor(10);
+            cout<<"Tai khoan hoac mat khau sai...";
+            gotoXY(79, 9);
+            cout << "Vui long nhap lai!"<<endl;
+            gotoXY(79, 10);
+            cout<< "(Please try again)";
+            TextColor(2);
+            gotoXY(79, 12);
+            TextColor(2);
+            cout << "Tai Khoan/ Account: " << endl;
+            gotoXY(79, 13);
+            TextColor(11);
+            getline(cin, u);
+            gotoXY(79, 14);
+            TextColor(2);
+            cout << "Mat Khau/ Password:" << endl;
+            gotoXY(79, 15);
+            TextColor(14);
+            getline(cin, p);
+        }
+
+    } while (user != u || pass != p);
+    gotoXY(76, 17);
+    cout << "Dang nhap thanh cong !!";
+    gotoXY(76, 18);
+    cout << "Nhan 1 phim bat ky de tiep tuc....";
+    getch();
+    menu();
+    return 0;
+}
