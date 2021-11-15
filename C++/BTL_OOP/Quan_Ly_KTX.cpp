@@ -39,24 +39,6 @@ void gotoXY (int column, int line)
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
 }
 
-int numberStudent(int &n){
-	cin >> n;
-    return n;
-}
-int numberManage(int &n){
-	cin >> n;
-    return n;
-}
-
-int SoluongSinhvien(int &n){
-	cin >> n;
-    return n;
-}
-int SoluongQuanly(int &n){
-	cin >> n;
-    return n;
-}
-
 class Person{
     private:
         string name;
@@ -76,10 +58,6 @@ class Person{
         void setAge(int age);
         string getAddress();
         void setAddress(string address);
-	int numberStudent(int &n);
-        int numberManage(int &n);
-        int SoluongSinhvien(int &n);
-        int SoluongQuanly(int &n);
         virtual void Nhap(int &);
         virtual void Xuat(int &);
         virtual void capnhatThongtin();
@@ -373,16 +351,16 @@ void Manage::Nhap(int &n){
 void Manage::Xuat(int &n){
     Person::Xuat(n);
     gotoXY(100,4+n);
-    cout << phone << endl;
+    cout << phone;
     gotoXY(115,4+n);
-    cout << seniority << endl;
+    cout << seniority;
     gotoXY(130,4+n);
-    cout << coefficientssalary << endl;
+    cout << coefficientssalary;
     gotoXY(145,4+n);
-    cout << position << endl;
+    cout << position;
     gotoXY(160,4+n);
     this->tinhtien();
-    cout << money << endl;
+    cout << money;
 }
 
 void Manage::capnhatThongtin(){
@@ -506,7 +484,6 @@ void inmenu4(){
 }
 
 void inkhung(){
-//in bien doc
     for(int i=1; i <25; i++){
 		gotoXY(34,i);
 		putchar(219);
@@ -532,7 +509,6 @@ void inkhung(){
         putchar(219);
 	}
 
-    // in bien ngang
     for(int i=35; i <177; i++){
 		gotoXY(i,1);
 		putchar(223);
@@ -541,7 +517,6 @@ void inkhung(){
 		gotoXY(i,3);
 		putchar(220);
 	}
-	// in cac tieu de
 	gotoXY(35,2);
 	cout<<" Ho va ten";
 	gotoXY(60,2);
@@ -565,7 +540,6 @@ void inkhung(){
 }
 
 void inkhung1(){
-//in bien doc
     for(int i=1; i <25; i++){
 		gotoXY(34,i);
 		putchar(219);
@@ -589,7 +563,6 @@ void inkhung1(){
 		putchar(219);
 	}
 
-    // in bien ngang
     for(int i=35; i <175; i++){
 		gotoXY(i,1);
 		putchar(223);
@@ -598,7 +571,6 @@ void inkhung1(){
 		gotoXY(i,3);
 		putchar(220);
 	}
-	// in cac tieu de
 	gotoXY(35,2);
 	cout<<" Ho va ten";
 	gotoXY(60,2);
@@ -620,7 +592,6 @@ void inkhung1(){
 }
 
 void inkhung3(){
-//in bien doc
     for(int i=1; i <25; i++){
 		gotoXY(34,i);
 		putchar(219);
@@ -646,7 +617,6 @@ void inkhung3(){
         putchar(219);
 	}
 
-    // in bien ngang
     for(int i=35; i <177; i++){
 		gotoXY(i,1);
 		putchar(223);
@@ -655,7 +625,6 @@ void inkhung3(){
 		gotoXY(i,3);
 		putchar(220);
 	}
-	// in cac tieu de
 	gotoXY(35,2);
 	cout<<" First and last name";
 	gotoXY(60,2);
@@ -679,7 +648,6 @@ void inkhung3(){
 }
 
 void inkhung4(){
-//in bien doc
     for(int i=1; i <25; i++){
 		gotoXY(34,i);
 		putchar(219);
@@ -703,7 +671,6 @@ void inkhung4(){
 		putchar(219);
 	}
 
-    // in bien ngang
     for(int i=35; i <175; i++){
 		gotoXY(i,1);
 		putchar(223);
@@ -712,7 +679,6 @@ void inkhung4(){
 		gotoXY(i,3);
 		putchar(220);
 	}
-	// in cac tieu de
 	gotoXY(35,2);
 	cout<<"First and last name";
 	gotoXY(60,2);
@@ -739,15 +705,15 @@ void giaodien()
     srand(time(NULL));
     SetColor(0, 1 + rand() % 15);
     gotoXY(45,1);
-    cout << "      ********     *    *     *       **      *       *     *      *        *     *  ********  *       *      " << endl;
-    gotoXY(45,2);
-    cout << "     *        *    *    *    *  *     *  *    *       *       *   *         *   *       *        *   *        " << endl;
-    gotoXY(45,3);
-    cout << "    *       *  *   *    *   *    *    *    *  *       *         *           * *         *          *          " << endl;
-    gotoXY(45,4);
-    cout << "     *        *    *    *  ********   *      **       *         *           *   *       *        *   *        " << endl;
-    gotoXY(45,5);
-    cout << "      ********  *  ****** *        *  *       *       *******   *           *     *     *      *       *      " << endl;
+    cout << "      ########     #      #     #       ##       #       #     #      #        #     #  ########  #       #      " << endl;
+    gotoXY(40,2);
+    cout << "     #        #    #      #    #  #     #  #     #       #       #   #         #   #       #        #   #        " << endl;
+    gotoXY(40,3);
+    cout << "    #       #  #   #      #   #    #    #    #   #       #         #           # #         #          #          " << endl;
+    gotoXY(40,4);
+    cout << "     #        #    #      #  ########   #      # #       #         #           #   #       #        #   #        " << endl;
+    gotoXY(40,5);
+    cout << "      ########  #  ######## #        #  #       ##       #######   #           #     #     #      #       #      " << endl;
 
     SetColor(0, 2);
     gotoXY(73,8);
@@ -919,8 +885,10 @@ void Dormitory::Nhap(){
 		  {
             system("cls");
         	inmenu1();
-            int a = SoluongSinhvien(n);
-            for(int i=0; i<a; i++){
+            cout << "\n\n\n  Nhap so luong sinh vien: " << endl;    
+            cin>>n;
+            cout << endl;
+            for(int i=0; i<n; i++){
             p = new Student[n];
             p->Nhap(i);
             p->selection(true);
@@ -932,8 +900,10 @@ void Dormitory::Nhap(){
         {   
             system("cls");
             inmenu1();
-            int b= SoluongQuanly(n);
-            for(int i=0; i<b; i++){
+            cout << "\n\n\n  Nhap so luong quan ly: " << endl;
+            cin >> n;
+            cout << endl;
+            for(int i=0; i<n; i++){
             p = new Manage[n];
             p->Nhap(i);
             p->selection(false);
@@ -970,8 +940,10 @@ void Dormitory::input(){
 		  {
             system("cls");
         	inmenu2();
-            int a = numberStudent(n);
-            for(int i=0; i<a; i++){
+            cout << "\n\n\n  Enter number of students: " << endl;
+            cin >> n;
+            cout << endl;
+            for(int i=0; i<n; i++){
             p = new Student[n];
             p->input(i);
             p->selection(true);
@@ -984,8 +956,10 @@ void Dormitory::input(){
         {   
             system("cls");
             inmenu2();
-            int b= numberManage(n);
-            for(int i=0; i<b; i++){
+            cout << "\n\n\n  Enter number of manages: " << endl;
+            cin >> n;
+            cout << endl;
+            for(int i=0; i<n; i++){
             p = new Manage[n];
             p->input(i);
             p->selection(false);
@@ -1439,13 +1413,17 @@ void Dormitory::capnhatID()
                     {
                         inkhung();
                         list_person[i]->capnhatThongtin();
+                        cout << "\n  Da cap nhat thanh cong!!!" << endl;
                     }
-                    
+                    else if (list_person[i]->selection()==false){
+                        cout << "\n  ID Khong ton tai!!!";
+                        break;
+                    }
                     break;
                 }
             }
             if (found == 0){
-                cout << "\n  Khong ton tai!!!\n\n"<< endl;
+                cout << "\n  ID Khong ton tai!!!\n\n"<< endl;
             }
             break;
         }
@@ -1468,13 +1446,17 @@ void Dormitory::capnhatID()
                     {
                         inkhung1();
                         list_person[i]->capnhatThongtin();
+                        cout << "\n  Da cap nhat thanh cong!!!" << endl;
                     }
-                    
+                    else if (list_person[i]->selection()==true){
+                        cout << "\n  ID Khong ton tai!!!";
+                        break;
+                    }
                     break;
                 }
             }
             if (found == 0){
-                cout << "\n  Khong ton tai!!!\n\n"<< endl;
+                cout << "\n  ID Khong ton tai!!!\n\n"<< endl;
             }
             break;
             
@@ -1522,8 +1504,12 @@ void Dormitory::updateID()
                     {
                         inkhung3();
                         list_person[i]->capnhatThongtin();
+                        cout << "\n  Successfully updated!!!" << endl;
                     }
-                    
+                    else if (list_person[i]->selection()==false){
+                        cout << "\n  ID does not exist!!!";
+                        break;
+                    }
                     break;
                 }
             }
@@ -1551,8 +1537,12 @@ void Dormitory::updateID()
                     {
                         inkhung4();
                         list_person[i]->capnhatThongtin();
+                        cout << "\n  Successfully updated!!!" << endl;
                     }
-                    
+                    else if (list_person[i]->selection()==true){
+                        cout << "\n  ID does not exist!!!";
+                        break;
+                    }
                     break;
                 }
             }
@@ -1652,7 +1642,7 @@ void Dormitory::timkiemID()
         }
         default:
         {
-            cout << "  Invalid selection!!!" << endl;
+            cout << "  Lua chon khong hop le!!!" << endl;
             break;
         }
         }
@@ -1774,7 +1764,7 @@ void Dormitory::xoaID()
                         break;
                     }
                     else if (list_person[i]->selection()==false){
-                        cout << "\n  Khong tim duoc theo yeu cau!!!";
+                        cout << "\n  ID khong ton tai!!!";
                         break;
                     }
                     break;
@@ -1807,7 +1797,7 @@ void Dormitory::xoaID()
                         break;
                     }
                     else if (list_person[i]->selection()==true){
-                        cout << "\n  Khong tim duoc theo yeu cau!!!";
+                        cout << "\n  ID khong ton tai!!!";
                         break;
                     }
                     break;
@@ -1826,7 +1816,7 @@ void Dormitory::xoaID()
         }
         default:
         {
-            cout << "  Invalid selection!!!" << endl;
+            cout << "  Lua chon khong hop le!!!" << endl;
             break;
         }
         }
@@ -1917,7 +1907,7 @@ void Dormitory::deleteID()
         }
         default:
         {
-            cout << "  Lua chon khong hop le!!!" << endl;
+            cout << "  Invalid selection!!!" << endl;
             break;
         }
         }
