@@ -1949,24 +1949,8 @@ void Dormitory::TotalMoney(){
     cout<<"Manager's total salary: "<<Tongluong<<endl;
     cout<<"Total dormitory rent: "<<Tongphi;
 }
-
-void menu()
-{
-
-    int chon;
-    int i = 1;
-    while (i)
-    {
-        giaodien();
-        gotoXY(70,23);
-        cout << "  Nhap lua chon: ";
-        gotoXY(72,24);
-        cin >> chon;
-        switch (chon)
-        {
-        case 1:
-        {
-            Dormitory p;
+void menu2(){
+	 Dormitory p;
             bool check;
             int Luachon, j = 1;
             while (j)
@@ -2018,7 +2002,7 @@ void menu()
                     }
                     else
                     {
-                        cout << "  Ban chua nhap thong tin vao!" << endl;
+                        cout << "Ban chua nhap thong tin vao!" << endl;
                         system("pause");
                         system("cls");
                     }
@@ -2123,16 +2107,13 @@ void menu()
                 }
                 }
             }
-            break;
-        }
-        case 2:
-        {
-            Dormitory p;
+           
+} 
+void menu1(){
+ Dormitory p;
             bool check;
             int Luachon, k = 1;
-            
-            while (k)
-            {
+            while (k) {
                 system("cls");
                 giaodien3();
                 cin >> Luachon;
@@ -2283,9 +2264,36 @@ void menu()
                     cout << "  Invalid selection!!!" << endl;
                     break;
                 }
-                }
-            }
-            break;
+            } 
+}
+}
+void menu()
+{
+
+    int chon;
+    int i = 1;
+    while (i)
+    {
+        giaodien();
+        gotoXY(70,23);
+        cout << "  Nhap lua chon: ";
+        gotoXY(72,24);
+        cin >> chon;
+        switch (chon)
+        {
+        case 1:
+         {
+           system("cls");
+           menu2(); 
+           system("cls");
+           break;
+        }
+        case 2:
+        {
+        system("cls");
+        menu1();
+        system("cls"); 
+        break;
         }
         case 3:
         {
